@@ -49,7 +49,7 @@ api.interceptors.response.use(
       toast.error('🔐 Unauthorized. Please check your API key.');
     } else if (error.response?.status === 403) {
       toast.error('🚫 Forbidden. You don\'t have permission to access this resource.');
-    } else if (error.response?.status >= 500) {
+    } else if ((error.response?.status ?? 0) >= 500) {
       toast.error('🔥 Server error. Please try again later.');
     }
     return Promise.reject(error);
