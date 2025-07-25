@@ -3,14 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import { apiService } from '@/lib/api';
 import { formatApiKey, isValidEmail } from '@/lib/utils';
+import { EmailConfigResponse } from '@/types';
 import LoadingSpinner from '../LoadingSpinner';
 import toast from 'react-hot-toast';
-
-interface EmailConfig {
-  resend_api_key: string;
-  from_email: string;
-  sending_domain: string;
-}
 
 interface EmailConfigForm {
   resend_api_key: string;
@@ -19,7 +14,7 @@ interface EmailConfigForm {
 }
 
 const EmailConfiguration: React.FC = () => {
-  const [config, setConfig] = useState<EmailConfig | null>(null);
+  const [config, setConfig] = useState<EmailConfigResponse | null>(null);
   const [form, setForm] = useState<EmailConfigForm>({
     resend_api_key: '',
     from_email: '',
