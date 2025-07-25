@@ -13,6 +13,14 @@ interface StatusUpdateForm {
   tracking_info?: string;
 }
 
+interface LastUpdateResult {
+  gift_id: string;
+  status: GiftStatus;
+  tracking_info?: string;
+  timestamp: string;
+  response?: any;
+}
+
 const GiftStatusManagement: React.FC = () => {
   const [form, setForm] = useState<StatusUpdateForm>({
     gift_id: '',
@@ -20,7 +28,7 @@ const GiftStatusManagement: React.FC = () => {
     tracking_info: ''
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [lastUpdate, setLastUpdate] = useState<any>(null);
+  const [lastUpdate, setLastUpdate] = useState<LastUpdateResult | null>(null);
 
   const statusOptions: { value: GiftStatus; label: string; description: string }[] = [
     { value: 'pending', label: 'Pending', description: 'Gift is awaiting processing' },
